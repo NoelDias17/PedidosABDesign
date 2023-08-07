@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Abelaira Design - Formulário</title>
+    <script>
+        function validarFormulario() {
+            document.getElementById("mensagem-aguarde").style.display = "block";
+            
+            var coresSelecionadas = document.querySelectorAll('input[type="color"]');
+            var coresContador = 0;
+
+            for (var i = 0; i < coresSelecionadas.length; i++) {
+                if (coresSelecionadas[i].value !== "#ffffff") { // Verifica se a cor não é preta (#000000)
+                    coresContador++;
+                }
+            }
+
+            if (coresContador < 3) {
+                alert("Selecione pelo menos 3 cores principais.");
+                return false;
+            }
+            return true; // Permitir o envio do formulário se as cores estiverem corretas
+        }
+    </script>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <h1>Abelaira Design Personalizados</h1>
+    <h2>Responda o Formulário</h2>
+    <form action="/" method="POST" enctype="multipart/form-data" onsubmit="return validarFormulario();">
+        <label for="info-basicas">Informações Básicas do Pedido:</label><br>
+        <!-- <label for="nome_cliente">Nome:</label> -->
+        <input type="text" id="nome_cliente" placeholder="Nome" name="nome_cliente" required><br><br>
+
+        <!-- <label for="email_cliente">Email:</label> -->
+        <input type="email" id="email_cliente" placeholder="Email" name="email_cliente" required><br><br>
+
+        <!-- <label for="tema_personalizado">Tema Principal do Personalizado:</label> -->
+        <input type="text" id="tema_personalizado" placeholder="Tema Principal do Personalizado"
+            name="tema_personalizado" required><br><br>
+
+        <!-- <label for="nome_personalizado">Nome no Personalizado:</label> -->
+        <input type="text" id="nome_personalizado" placeholder="Nome no Personalizado" name="nome_personalizado" required><br><br>
+
+        <!-- <label for="idade">Idade no Personalizado:</label> -->
+        <input type="number" id="idade" placeholder="Idade no Personalizado" name="idade"><br><br>
+
+        <label for="foto_painel">Envie uma Imagem do Painel da Festa:</label><br>
+        <input type="file" id="foto_painel" name="foto_painel" accept="image/*"><br><br>
+
+        <label for="referencias_personalizados">Envie até 3 Imagens para ajudar na Referência dos
+            Personalizados:</label><br>
+        <!-- <input type="file" id="referencias_personalizados" name="referencias_personalizados[]" accept="image/*" multiple><br><br> -->
+        <input type="file" id="referencias_personalizados" name="referencias_personalizados1" accept="image/*"><br>
+        <input type="file" id="referencias_personalizados" name="referencias_personalizados2" accept="image/*"><br>
+        <input type="file" id="referencias_personalizados" name="referencias_personalizados3" accept="image/*"><br><br>
+
+        <label>Escolha a cor para o Acabamento dos Personalizados:</label><br>
+        
+        <div class="radio-textos">
+            <label>
+                <input type="radio" id="prata" name="acabamento" value="Prata" required>
+                Prata
+            </label><br>
+
+            <label>
+                <input type="radio" id="dourado" name="acabamento" value="Dourado">
+                Dourado
+            </label><br>
+
+            <label>
+                <input type="radio" id="nenhum" name="acabamento" value="Nenhum">
+                Nenhuma das Opções
+            </label>
+        </div>
+        <br><br>
+
+        <label for="cores_principais">Escolha no mínimo 3 e no máximo 5 Cores Principais:</label><br>
+        <input type="color" id="cor1" name="cores_principais[]" value="#ffffff" required><br><br>
+        <input type="color" id="cor2" name="cores_principais[]" value="#ffffff"><br><br>
+        <input type="color" id="cor3" name="cores_principais[]" value="#ffffff"><br><br>
+        <input type="color" id="cor4" name="cores_principais[]" value="#ffffff"><br><br>  
+        <input type="color" id="cor5" name="cores_principais[]" value="#ffffff"><br><br>
+
+        <label for="detalhes_observacoes">Detalhes e Observações Extras:</label><br>
+        <textarea id="detalhes_observacoes" name="detalhes_observacoes" rows="4" cols="50"></textarea><br><br>
+
+        <input type="submit" value="Enviar Pedido">
+    </form>
+    <div class="mensagem-aguarde" id="mensagem-aguarde" style="display: none;">Enviando o pedido, aguarde alguns segundos...</div><br><br>
+</body>
+
+</html>

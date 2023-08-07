@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pedido Enviado</title>
+    <style>
+        body {
+            background-color: pink; /* Define a cor de fundo como rosa */
+        }
+
+        h1,h2,h4 {
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            color: rgb(255, 81, 110);
+            margin-top: 20px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+</head>
+<body>
+    <div class="container">
+        <img src="{{ url_for('static', filename='pedido_enviado.png') }}"><br><br><br>
+    </div>
+    <h1>Pedido Enviado com Sucesso!</h1>
+    <h2>Verifique sua caixa de e-mail, qualquer dúvida estamos a disposição.</h2>
+    <h4>Att Equipe Abelaira Design</h4>
+</body>
+</html>
